@@ -34,11 +34,11 @@ First off you need to have it installed. To install virtualenv
 	- Hopefully that's all that needs to be done. I`ll update this if I figure out extra steps/different commands are needed in windows.
 0. Navigate to the virtualenv folder - `*REPO/codingenv/Sources*`
 0. Run `activate.ps1` found in the virtualenv's *Sources* folder by simply typing - `.\activate.ps1`
-	- If your PS says `execution of scripts is disabled on this system` You`ll need to execute the command `Set-ExecutionPolicy RemoteSigned`. Enter `y`, you should not have to do this step again.
+	- If your PS says `execution of scripts is disabled on this system` You'll need to execute the command `Set-ExecutionPolicy RemoteSigned`. Enter `y`, you should not have to do this step again.
 
 THAT'S it! Your commandline should now start with `(codingenv)` followed by your current folder path. 
 
-If you type in `pip freeze` it should show you all current languages being used. 
+If you type in `pip freeze` it should show you all current packages being used. 
 
 * To exit the virtualenv type `deactivate`
 
