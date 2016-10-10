@@ -23,6 +23,7 @@ How to use virtualenv
 ---------------------
 These instructions are assuming you are using PowerShell
 First off you need to have it installed. To install virtualenv
+
 0. Download and install Python.
 	* Make sure Python is in your environment 'PATH' variable
 0. Install pip - This link may be helpful for Windows users (https://pip.pypa.io/en/latest/installing/)
