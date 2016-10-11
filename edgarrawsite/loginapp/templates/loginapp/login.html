@@ -1,0 +1,40 @@
+{% extend "base.html" %}
+{% load static %}
+
+{% block title %} Login {% endblock %}
+
+{% block content %}
+<div class="top-bar" id="main-menu">
+  <div class ="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">Coffe Site</li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="dropdown menu" data-dropdown-menu>
+
+    </ul>
+  </div>
+  <div class="row">
+    <div class="medium-6 medium-centered large-4 large-centered columns">
+      <!-- <form method="post" action="{% url 'login' %}"> -->
+      <form method="post" action="/loginapp/">
+        {% csrf_token %}
+        <div class="row column log-in-form">
+          <h4 class="text-center">Log In</h4>
+          <label>
+            {{ form.username.label_tag }}
+            {{ form.username }}
+          </label>
+          <label>
+            {{ form.password.label_tag }}
+            {{ form.password }}
+          </label>
+          <input type="submit" class="button expanded" value="Log In">
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

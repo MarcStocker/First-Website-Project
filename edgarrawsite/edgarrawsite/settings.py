@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# This path is where a user is directed when they first log in
+# Maybe I got that wrong, this is where people are redirected if they arent logged in.
+LOGIN_REDIRECT_URL = '/'
 
 # Application definition
 
@@ -37,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'homepageapp'
+    'homepageapp',
+    'loginapp'
 ]
 
 MIDDLEWARE = [

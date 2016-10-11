@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} {{ page_name }} {% endblock %}
+
+{% block content %}
+<div class="top-bar" id="main-menu">
+  <div class ="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">
+        <a href="/home/"> {{ sitename }} </a>
+      </li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <!-- this will display things for only users who are ogged in -->
+      {% if user.is_authenticated %}
+      <li>
+        <a href="/home/">Logout</a>
+      </li>
+      {% else %}
+      <li>
+        <a href="/login/">Log In</a>
+      </li>
+      {% endif %}
+
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="medium-6 medium-centered large-4 large-centered columns">
+    <form method="post" action="/login/">
+      {% csrf_token %}
+      <div class="row column log-in-form">
+        <h4 class="text-center">Log In</h4>
+        <label>
+          {{ form.username.label_tag }}
+          {{ form.username }}
+        </label>
+        <label>
+          {{ form.password.label_tag }}
+          {{ form.password }}
+        </label>
+        <input type="submit" class="button expanded" value="Log In">
+      </div>
+
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+<!-- <form method="post" action="{% url 'login' %}"> -->
