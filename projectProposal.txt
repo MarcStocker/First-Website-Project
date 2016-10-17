@@ -1,0 +1,16 @@
+Marc Stocker Final Website Project Proposal
+
+The purpose of this website is to build a foundation for a personal website for my friend Edgar (Instagram name: EdgarRaw) to upload and keep track of his recipes, also allowing his Instagram followers to visit his page and look up specific recipes.
+
+Scope/Features:
+- Home page that will act as the main page for browsing through recipes. It will include a picture of the recipe, it's name, and a few key tags about the recipe.
+- Recipe Page. This page will have all the info about a particular recipe. Pictures, ingredient, instructions and a link to the Instagram post about it (and if time allows a comment section).
+- Implementing Users to allow edgar to easily log into the site to upload, and edit all of his recipes.
+	- I would also like to allow other users to create accounts and perhaps comment on the individual recipes
+- A search page. A search bar will be provided on the homepage and allow users to search for specific ingredients, recipes, or types of recipes. This will open a new search page window. 
+
+Stretch goals:
+- Instagram feed. I would like to implement an Instagram feed on the homepage (or even every page) that would display Edgars top posts, or most recent posts. 
+- Search page with toggle Buttons that auto updates without refreshing. This page would make use of buttons to toggle certain search filters. Search filters would include individual ingredients, types of meals or foods. (Ex. Breakfast, dinner, lunch, soups, fruit, onions, tofu, etc.)
+
+Timeline is provided in the form of a Gant Chart.
