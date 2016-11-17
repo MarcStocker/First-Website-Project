@@ -7,6 +7,8 @@ from django.utils.html import escape
 from django.http import JsonResponse
 import datetime
 from django.contrib.auth.decorators import login_required
+from django.template import RequestContext
+
 
 import json as json
 from .forms import RecipeForm
@@ -39,15 +41,16 @@ def submitRecipe(request):
     }
     return render(request, 'addrecipe.html', context)
 
+@login_required(login_url="/login/")
 def editRecipe(request, recipe_id):
     recipe = Recipe.objects.get(pk=recipe_id)
-    if request.method=='POST':
+    if request.POST:
         form = RecipeForm(request.POST, request.FILES, instance=recipe)
         if form.is_valid():
-            form.save(request)
+            form.save()
             return HttpResponseRedirect('/recipes/')
     else:
-        form = RecipeForm()
+        form = RecipeForm(instance=recipe)
     context = {
         'sitename':"EdgarRaw",
         'page_name':"Edit Recipe - EdgarRaw",
