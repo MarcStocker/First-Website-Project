@@ -26,17 +26,34 @@ def index(request):
 @login_required(login_url="/login/")
 def submitRecipe(request):
     if request.method=='POST':
-        form = RecipeForm(request.POST)
+        form = RecipeForm(request.POST, request.FILES)
         if form.is_valid():
-            model_instance = form.save()
+            form.save(request)
+            return HttpResponseRedirect('/recipes/')
     else:
         form = RecipeForm()
     context = {
         'sitename':"EdgarRaw",
-        'page_name':"Add a Recipe",
+        'page_name':"Add a Recipe - EdgarRaw",
         'form':form,
     }
     return render(request, 'addrecipe.html', context)
+
+def editRecipe(request, recipe_id):
+    recipe = Recipe.objects.get(pk=recipe_id)
+    if request.method=='POST':
+        form = RecipeForm(request.POST, request.FILES, instance=recipe)
+        if form.is_valid():
+            form.save(request)
+            return HttpResponseRedirect('/recipes/')
+    else:
+        form = RecipeForm()
+    context = {
+        'sitename':"EdgarRaw",
+        'page_name':"Edit Recipe - EdgarRaw",
+        'form':form,
+    }
+    return render(request, 'editrecipe.html', context)
 
 def viewRecipe(request, recipe_id):
     recipe = Recipe.objects.get(pk=recipe_id)

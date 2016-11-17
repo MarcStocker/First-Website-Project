@@ -20,31 +20,53 @@
       <h1>This is a WebSite for EdgarRaw!!!</h1>
           <h3>About:</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br>
-      <strong>Todo List</strong>
-        <ul>
-          {% for thelist in todolist %}
-              <form>
-                <input type="checkbox" id="check">
-                  <label for="check">
-                    {{ thelist.item }}
-                  </label>
-                  {% if thelist.is_done %}
-                    <img src="/static/images/checkmark image.jpg"/>
-                  {% elif thelist.in_progress %}
-                    - in progress...
-                  {% endif %}
-              </form>
-          {% endfor %}
-        </ul>
+      <!-- <strong>Todo List</strong> -->
+        <!-- <ul> -->
+          <!-- {% for thelist in todolist %} -->
+              <!-- <form> -->
+                <!-- <input type="checkbox" id="check"> -->
+                  <!-- <label for="check"> -->
+                    <!-- {{ thelist.item }} -->
+                  <!-- </label> -->
+                  <!-- {% if thelist.is_done %} -->
+                    <!-- <img src="/static/images/checkmark image.jpg"/> -->
+                  <!-- {% elif thelist.in_progress %} -->
+                    <!-- - in progress... -->
+                  <!-- {% endif %} -->
+              <!-- </form> -->
+          <!-- {% endfor %} -->
+        <!-- </ul> -->
       </div>
     </div>
 </div>
-
 <div class="row">
-    <div class="column text-center">
-        <a href="/recipes/">
-            <img src="//placehold.it/300x300" class="thumbnail" alt="">
-        </a>
-    </div>
+  <h1>Check out some of my Recipes!!!  <a href="/recipes/">Click Here For More!</a></h1> 
 </div>
+
+  <div class="row small-up-1 medium-up-2 large-up-4">
+    {% if random_object1 %}
+    <div class="column">
+        <a href="/recipes/{{ random_object1.id }}/"><p>{{ random_object1.title }}</p></a>
+        <a href="/recipes/{{ random_object1.id }}/"><img class="thumbnail" src="{{ random_object1.image.url }}" alt="" width=270 length=320></a>
+    </div>
+    {% endif %}
+    {% if random_object2 %}
+    <div class="column">
+        <a href="/recipes/{{ random_object2.id }}/"><p>{{ random_object2.title }}</p></a>
+        <a href="/recipes/{{ random_object2.id }}/"><img class="thumbnail" src="{{ random_object2.image.url }}" alt="" width=270 length=320></a>
+    </div>
+    {% endif %}
+    {% if random_object3 %}
+    <div class="column">
+        <a href="/recipes/{{ random_object3.id }}/"><p>{{ random_object3.title }}</p></a>
+        <a href="/recipes/{{ random_object3.id }}/"><img class="thumbnail" src="{{ random_object3.image.url }}" alt="" width=270 length=320></a>
+    </div>
+    {% endif %}
+    {% if random_object4 %}
+    <div class="column">
+        <a href="/recipes/{{ random_object4.id }}/"><p>{{ random_object4.title }}</p></a>
+        <a href="/recipes/{{ random_object4.id }}/"><img class="thumbnail" src="{{ random_object4.image.url }}" alt="" width=270 length=320></a>
+    </div>
+    {% endif %}
+  </div>
 {% endblock %}

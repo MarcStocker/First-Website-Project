@@ -5,7 +5,8 @@
 {% block content %}
 <div class="row">
   <div class="medium-6 medium-centered large-8 large-centered columns">
-    <form method="post" action="/recipes/submit">
+    <!-- <form method="post" action="/recipes/submit"> -->
+    <form method="post" action="" enctype="multipart/form-data">
       {% csrf_token %}
       <div class="row column">
         <h4 class="text-center">Add a new recipe</h4>
@@ -15,6 +16,15 @@
         </label>
         <label> {{ form.description.label_tag }}
           {{ form.description }}
+        </label>
+        <label> {{ form.ingredients.label_tag }}
+          {{ form.ingredients }}
+        </label>
+        <label> {{ form.recipe.label_tag }}
+          {{ form.recipe }}
+        </label>
+        <label> {{ form.image.label_tag }}
+          {{ form.image }}
         </label>
         <input type="submit" class="button expanded" value="Submit Recipe">
       </div>

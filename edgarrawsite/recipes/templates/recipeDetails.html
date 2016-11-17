@@ -17,23 +17,31 @@
             {% endif %}
         </div>
     </div>
+    {% if recipe.recipe %}
     <div class="large-4 medium-3 columns">
+        {% if user.is_superuser %}
+          <br />
+          <form action="/recipes/{{ recipe.id }}/edit">
+              <input type="submit" value="Edit Recipe" />
+          </form>
+          <br />
+        {% else %}
         <br />
         <br />
         <br />
-        {% if recipe.recipe %}
+        {% endif %}
         <h3>Recipe</h3>
         <pre>{{ recipe.recipe }}</pre>
-        {% endif %}
 
     </div>
+    {% endif %}
+    {% if recipe.ingredients %}
     <div class="large-4 medium-3 columns">
         <br />
         <br />
         <br />
-        {% if recipe.ingredients %}
         <h3>Ingredients</h3>
         <pre>{{ recipe.ingredients }}</pre>
-        {% endif %}
     </div>
+    {% endif %}
 {% endblock %}
