@@ -10,12 +10,12 @@ from .models import TodoList
 
 from .forms import AuthenticationForm, LoginForm
 # Create your views here.
-@login_required(login_url="/home/")
-def index(request):
+#@login_required(login_url="/home/")
+def home(request):
     todolist = TodoList.objects.all()
     context = {
         'sitename':"EdgarRaw",
         'page_name':"Home - EdgarRaw",
         'todolist': todolist,
     }
-    return render(request, 'homepage.html', context)
+    return render(request, 'homepageapp/homepage.html', context)

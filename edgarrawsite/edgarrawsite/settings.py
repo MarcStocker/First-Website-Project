@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 # This path is where a user is directed when they first log in
 # Maybe I got that wrong, this is where people are redirected if they arent logged in.
-LOGIN_REDIRECT_URL = '/'
+# LOGIN_REDIRECT_URL = '/'
 
 # Application definition
 
@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'homepageapp',
-    'loginapp'
+    'loginapp',
+    'recipes',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +60,8 @@ ROOT_URLCONF = 'edgarrawsite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["edgarrawsite/templates/"],
+        # ["C:\Dropbox\School\\2016-2017_School_Year\CINS_465_Web_Programming\\assignments\First-Website-Project\edgarrawsite\edgarrawsite\\templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,5 +123,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
-
+STATIC_PATH = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    STATIC_PATH,
+)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

@@ -4,8 +4,8 @@ from . import views
 app_name = 'loginapp'
 
 urlpatterns = [
-    #<WebSite.com>
+    #<WebSite.com>/login/
     url(r'^$', views.index, name="index"),
-    #<WebSite.com>/home/
-    url(r'^login/$', views.index, name="index"),
+    #<WebSite.com>/register/
+    url(r'register$', views.register, name="register"),
 ]

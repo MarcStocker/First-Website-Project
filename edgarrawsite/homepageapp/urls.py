@@ -4,8 +4,8 @@ from . import views
 app_name = 'homepageapp'
 
 urlpatterns = [
-    #<WebSite.com>
-    url(r'^$', views.index, name="index"),
+    #<WebSite.com>/
+    url(r'^$', views.home, name="home"),
     #<WebSite.com>/home/
-    url(r'^home/$', views.index, name="index"),
+    url(r'^home/$', views.home, name="home"),
 ]
