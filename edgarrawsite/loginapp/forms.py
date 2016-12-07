@@ -36,4 +36,4 @@ class EdgarForm(forms.ModelForm):
     class Meta:
         model = edgar
         fields = ['image', 'description', 'num_followers', 'num_posts', "num_following",
-                  'insta_url', "fb_url", 'email', 'banner']
+                  'insta_url', "fb_url", 'email', 'banner', 'insta_image', 'fb_image']
