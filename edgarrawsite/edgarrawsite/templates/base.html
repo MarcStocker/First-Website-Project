@@ -2,60 +2,81 @@
 <!DOCTYPE html>
 
 <!-- Header Section -->
-<div class="top-bar" id="main-menu">
-    <div class ="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
-            <li class="menu-text">
-                <a href="{% url 'homepageapp:home' %}"> EdgarRaw | <img src=" {% static "media/icon2.png" %}" width=19 length=19 /> </a>
-            </li>
-        </ul>
+<div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+    <button class="menu-icon" type="button" data-toggle></button>
+    <div class="title-bar-title">
+        Menu
     </div>
-    <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
-            <li class="menu-text">
-                <form action="{% url 'recipes:index' %}">
-                    <input type="submit" value="Recipes" />
-                </form>
-            </li>
-        </ul>
-    </div>
-    <div class="top-bar-right">
-        <ul class="dropdown menu" data-dropdown-menu>
-            <!-- this will display things for only users who are ogged in -->
-            {% if user.is_authenticated %} <!-- Display Logout -->
-            <li>
-                <a href="/logout/"><img src="{% static "media/logouticon.png" %}" width=19 length=19 /> | Logout</a>
-            </li>
-            {% else %} <!-- Display Log In -->
-            <li>
-                <a href="/login/"><img src="{% static "media/loginicon1.png" %}" width=19 length=19 /> | Log In</a>
-            </li>
-            {% endif %}
+</div>
 
-        </ul>
-    </div>
-    {% if user.is_superuser %}
-    <div class="top-bar-right">
-        <ul class="dropdown menu" data-dropdown-menu>
-            <li class="menu-text">
-                <form action="/recipes/submit">
-                    <input type="submit" value="Add New Recipe" />
-                </form>
-            </li>
-        </ul>
-    </div>
-    {% endif %}
-    {% if user.is_authenticated %}
-    <div class="top-bar-center">
-        <ul class="dropdown menu" data-dropdown-menu>
-            <li class="menu-text">
-                <p>
-                    Welcome {{ user.username }}!!
-                </p>
-            </li>
-        </ul>
-    </div>
-    {% endif %}
+<div class="fixed">
+    <nav class="top-bar" id="example-menu">
+        <div class ="small-1 top-bar-left">
+            <ul class="dropdown menu" data-dropdown-menu>
+                {# Home Page Icon/Link #}
+                <li class="menu-text">
+                    <a href="{% url 'homepageapp:home' %}"> EdgarRaw | <img src=" {% static "media/icon2-grey.png" %}" width=19 length=19 /> </a>
+                </li>
+                {# Link to Recipes #}
+                <li class="menu-text">
+                    <a class="hollow button" href="/recipes">Recipes</a>
+                </li>
+                <li>
+                    <a class="button" disable="True" href="#"><b>Follow Edgar</b></a>
+                    <ul class="menu vertical">
+                        <li>
+                            <a href="https://www.instagram.com/edgarraw/" target="_blank">
+                                <img src="{% static "media/instagram-logo-grey.png" %}" alt="EdgarRaw Instagram" width=42 length=42>
+                            Instagram</a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/edgarraw2/" target="_blank">
+                                <img src="{% static "media/FaceBookicon.jpg" %}" alt="EdgarRaw2 Facebook" width=42 length=42>
+                            Facebook</a>
+                        </li>
+                    </ul>
+                </li>
+                {% if user.is_superuser %}
+                <li class="menu-text">
+                    {# Admin Dropdown Box #}
+                    <a class="success button" href="#">Admin Console</a>
+                    <ul class="menu vertical">
+                        <li><a class="hollow button" href="/recipes/submit"><b>Add New Recipe</b></a></li>
+                        <li><a class="success hollow button" href="/home/edit">Edit Website Data</a></li>
+                        <li><a class="warning hollow button" href="/admin">Admin Site</a></li>
+                    </ul>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="top-bar-right">
+            <ul class="dropdown menu" data-dropdown-menu>
+                <!-- this will display things for only users who are ogged in -->
+                {% if user.is_authenticated %} <!-- Display Logout -->
+                <li class="menu-text">
+                    <a href="/logout/"><img src="{% static "media/logouticon-grey.png" %}" width=19 length=19 /> | Logout</a>
+                </li>
+                {% else %} <!-- Display Log In -->
+                <li>
+                    <a href="/login/"><img src="{% static "media/loginicon1-grey.png" %}" width=19 length=19 /> | Log In</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="top-bar-right">
+            <ul class="dropdown menu" data-dropdown-menu>
+                <li>
+                    <form id="searchForm" method="post" action="/recipes/search">
+                        {% csrf_token %}
+                        <input type="text" name="term" size="30" placeholder="Search for a Recipe..."/>
+                    </form>
+                </li>
+                <li>
+                    <input type="submit button" class="button expanded" value="Search" form="searchForm"/>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </div>
 
 <!-- Individual App Body Section -->
@@ -63,20 +84,36 @@
 
 
 <!-- CSS and JS -->
-<html class="no-js" lang="en" dir="ltr">
+<html lang="en" dir="ltr">
 <head>
+    <title>{% block title %}{% endblock %} </title>
     <link rel="Page Icon" href="{% static "media/icon2.png" %}" />
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock %} </title>
     <link rel="stylesheet" href="{% static "css/foundation.css" %}">
     <link rel="stylesheet" href="{% static "css/app.css" %}">
     <style>
         pre{
             white-space:pre-wrap;
+            font-family: Verdana;
+            font-size: 20px;
+        }
+        body{
+            /*background-image: url("{% static "media/background.jpg"%}");*/
+            background-color: #555555;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="number"],
+        input[type="email"], textarea {
+            background-color: #757575
         }
     </style>
+    <script src="{% static "js/vendor/jquery.js" %}"></script>
+    <script src="{% static "js/vendor/what-input.js" %}"></script>
+    <script src="{% static "js/vendor/foundation.js" %}"></script>
+    <script src="{% static "js/app.js" %}"></script>
 </head>
 </html>
 

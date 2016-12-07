@@ -10,8 +10,9 @@
     <form method="post" action="" enctype="multipart/form-data">
       {% csrf_token %}
       <div class="row column">
-        <h4 class="text-center">Edit recipe</h4>
+        <h1 class="text-center">Edit recipe</h1>
         {{ form.errors }}
+        <h3 class="text-left">Editting: {{ post.title }}</h3>
         <label> {{ form.title.label_tag }}
           {{ form.title }}
         </label>
@@ -25,11 +26,15 @@
           {{ form.recipe }}
         </label>
         <label> {{ form.image.label_tag }}
-          {{ form.image }}
+            <img class="thumbnail" src="{{ post.image.url }}" alt="" width=270 length=320>
+            <br />
+            {{ form.image }}
         </label>
-        <input type="submit" class="button expanded" value="Submit Recipe">
+        <input type="submit" class="button expanded" value="Confirm Edit">
       </div>
     </form>
+        <a role="button" href="/recipes/{{ post.id }}" class="button alert expanded">Cancel</a>
+
     {% else %}
     <h1>You must be logged into an admin account to edit recipes... Nice try Bub</h1>
     {% endif %}

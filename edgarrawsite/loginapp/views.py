@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 import json as json
 
 from .forms import *
+
 from django.contrib.auth import authenticate, login
 # Create your views here.
 #@login_required(login_url="/login/")

@@ -1,7 +1,8 @@
 from django import forms
 from .models import Recipe
 
-class RecipeForm(forms.Form):
+import os
+class RecipeForm(forms.ModelForm):
     title = forms.CharField(
         label="Title",
         max_length=64,
@@ -33,13 +34,22 @@ class RecipeForm(forms.Form):
         label="Image",
     )
 
-    def save(self, request, commit=True):
-        thisrecipe= Recipe()
+    def update(self, instance, thefile, commit=True):
+        thisrecipe = Recipe(pk=instance)
         thisrecipe.title=self.cleaned_data['title']
         thisrecipe.description=self.cleaned_data['description']
         thisrecipe.ingredients=self.cleaned_data['ingredients']
         thisrecipe.recipe=self.cleaned_data['recipe']
+        if thisrecipe.image != self.cleaned_data['image']:
+            BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+            dafile = str(thefile)
+            print("Dafile: " + dafile)
+            path = os.path.join(MEDIA_ROOT, dafile.replace('/', '\\'))
+            print("Path: " + path)
+            # os.remove(path)
         thisrecipe.image=self.cleaned_data['image']
+        print("New Image: " + str(self.cleaned_data['image']))
         if commit:
             thisrecipe.save()
         return thisrecipe

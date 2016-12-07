@@ -9,4 +9,5 @@ class Recipe(models.Model):
     image = models.ImageField(max_length=144, upload_to='uploads/%Y/%m/%d/')
 
     def __str__(self):
-        return self.title
+        Recipe.objects.order_by('-self.id')
+        return str(self.id) + " - " + self.title

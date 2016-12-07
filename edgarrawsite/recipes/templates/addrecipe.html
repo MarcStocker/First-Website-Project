@@ -10,7 +10,7 @@
     <form method="post" action="" enctype="multipart/form-data">
       {% csrf_token %}
       <div class="row column">
-        <h4 class="text-center">Add a new recipe</h4>
+        <h1 class="text-center">Add a new recipe</h1>
         {{ form.errors }}
         <label> {{ form.title.label_tag }}
           {{ form.title }}
@@ -29,6 +29,9 @@
         </label>
         <input type="submit" class="button expanded" value="Submit Recipe">
       </div>
+    </form>
+    <form action="/recipes/">
+        <input type="submit" class="button expanded alert" value="Cancel">
     </form>
     {% else %}
     <h1>You must be logged into an admin account to add a recipe... Nice try Bub</h1>

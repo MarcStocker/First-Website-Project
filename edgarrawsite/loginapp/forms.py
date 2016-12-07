@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
+from .models import edgar
 
 
 class LoginForm(AuthenticationForm):
@@ -30,3 +31,8 @@ class RegisterForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+class EdgarForm(forms.ModelForm):
+    class Meta:
+        model = edgar
+        fields = ['image', 'description', 'num_followers', 'num_posts', "num_following", 'insta_url', "fb_url", 'email', 'banner']

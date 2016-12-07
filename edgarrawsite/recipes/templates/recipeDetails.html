@@ -6,31 +6,39 @@
 {% block content %}
 
     <div class="large-4 medium-3 columns">
+        {% if user.is_superuser %}
+        <br />
+        <div class="large-11 medium-11 small-12 text-center">
+            {# EDIT button, to edit recipe #}
+            <a role="button" href="/recipes/{{ recipe.id }}/edit" class="button"><font size="4">Edit Recipe</font></a>
+            {# DELETE button that opens a Modal to confirm#}
+            <a data-open="deleteRecipe" role="button" class="button alert">DELETE RECIPE</a>
+            {# The CONFIRM DELETE Modal #}
+            <div class="reveal" id="deleteRecipe" data-reveal>
+              <h1 class="text-center">WARNING!</h1>
+              <h3 class="text-center">Are you sure you wish to delete:</h3>
+              <h3 class="text-center">{{ recipe.title }}</h3>
+              <a role="button" href="/recipes/{{ recipe.id }}/delete" class="button expanded large alert">DELETE</a>
+              <button class="close-button" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+        </div>
+        {% else %}
+        {% endif %}
         <h1>{{ recipe.title }}</h1>
         <img src="{{ recipe.image.url }}" class="img-responsive" />
         <div class="large-10 medium-10">
             {% if recipe.description %}
-            <h3>Description</h3>
-            <p>
-                {{ recipe.description }}
-            </p>
+            <h2>Description</h2>
+            <p> <font size="3">{{ recipe.description }} </font></p>
             {% endif %}
         </div>
     </div>
     {% if recipe.recipe %}
     <div class="large-4 medium-3 columns">
-        {% if user.is_superuser %}
-          <br />
-          <form action="/recipes/{{ recipe.id }}/edit">
-              <input type="submit" value="Edit Recipe" />
-          </form>
-          <br />
-        {% else %}
-        <br />
-        <br />
-        <br />
-        {% endif %}
-        <h3>Recipe</h3>
+        <br /> <br /> <br /> <br />
+        <h2>Recipe</h2>
         <pre>{{ recipe.recipe }}</pre>
 
     </div>
@@ -39,22 +47,18 @@
     <div class="large-4 medium-3 columns">
         {% if not recipe.recipe %}
           {% if user.is_superuser %}
-            <br />
-            <form action="/recipes/{{ recipe.id }}/edit">
-                <input type="submit" value="Edit Recipe" />
-            </form>
-            <br />
+            <br /> <br /> <br /> <br /> <br />
           {% else %}
-            <br />
-            <br />
-            <br />
+            <br /> <br /> <br />
           {% endif %}
         {% else %}
-          <br />
-          <br />
-          <br />
+            {% if user.is_superuser %}
+                <br /> <br /> <br /> <br />
+            {% else %}
+                <br /> <br /> <br />
+            {% endif %}
         {% endif %}
-        <h3>Ingredients</h3>
+        <h2>Ingredients</h2>
         <pre>{{ recipe.ingredients }}</pre>
     </div>
     {% endif %}
