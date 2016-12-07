@@ -35,4 +35,5 @@ class RegisterForm(UserCreationForm):
 class EdgarForm(forms.ModelForm):
     class Meta:
         model = edgar
-        fields = ['image', 'description', 'num_followers', 'num_posts', "num_following", 'insta_url', "fb_url", 'email', 'banner']
+        fields = ['image', 'description', 'num_followers', 'num_posts', "num_following",
+                  'insta_url', "fb_url", 'email', 'banner']
