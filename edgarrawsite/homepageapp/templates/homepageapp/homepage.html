@@ -8,7 +8,7 @@
             <h1 class="text-center">
                 {{ webinfo.banner }}
             </h1>
-    <div class="row">
+    <div class="large-12 medium-12 medium-centered small-4 small-centered row">
         <div class="large-4 large-left medium-5 medium-left columns"> <br />
             <img src="{{ webinfo.image.url }}" width=400 length=300>
         </div>
@@ -34,25 +34,25 @@
 <div class="row small-up-1 small-centered medium-up-2 medium-centered large-up-4">
     {% if random_object1 %}
     <div class="column">
-        <a href="/recipes/{{ random_object1.id }}/"><b>{{ random_object1.title }}</b></a>
+        <a href="/recipes/{{ random_object1.id }}/"><p><b>{{ random_object1.title }}</b></p></a>
         <a href="/recipes/{{ random_object1.id }}/"><img class="thumbnail" src="{{ random_object1.image.url }}" alt="" width=270 length=320></a>
     </div>
     {% endif %}
     {% if random_object2 %}
     <div class="column">
-        <a href="/recipes/{{ random_object2.id }}/"><p>{{ random_object2.title }}</p></a>
+        <a href="/recipes/{{ random_object2.id }}/"><p><b>{{ random_object2.title }}</b></p></a>
         <a href="/recipes/{{ random_object2.id }}/"><img class="thumbnail" src="{{ random_object2.image.url }}" alt="" width=270 length=320></a>
     </div>
     {% endif %}
     {% if random_object3 %}
     <div class="column">
-        <a href="/recipes/{{ random_object3.id }}/"><p>{{ random_object3.title }}</p></a>
+        <a href="/recipes/{{ random_object3.id }}/"><p><b>{{ random_object3.title }}</b></p></a>
         <a href="/recipes/{{ random_object3.id }}/"><img class="thumbnail" src="{{ random_object3.image.url }}" alt="" width=270 length=320></a>
     </div>
     {% endif %}
     {% if random_object4 %}
     <div class="column">
-        <a href="/recipes/{{ random_object4.id }}/"><p>{{ random_object4.title }}</p></a>
+        <a href="/recipes/{{ random_object4.id }}/"><p><b>{{ random_object4.title }}</b></p></a>
         <a href="/recipes/{{ random_object4.id }}/"><img class="thumbnail" src="{{ random_object4.image.url }}" alt="" width=270 length=320></a>
     </div>
     {% endif %}

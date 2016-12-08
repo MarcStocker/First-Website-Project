@@ -21,24 +21,20 @@ def home(request):
     max_id = Recipe.objects.order_by('-id')[0].id
     all_recipes = Recipe.objects.all()
     # grab a random possible id. But, it could not exist if we deleted Something
-    # print("MaxID: "+str(max_id))
     random_id1 = random.randint(1, max_id)
-    # print(random_id1)
     random_object1 = Recipe.objects.filter(id__gte=random_id1)[0]
     random_id2 = random.randint(1, max_id)
-    # print(random_id2)
+    if random_id2 == max_id:
+        random_id2 = 1;
     random_object2 = Recipe.objects.filter(id__gte=random_id2).exclude(pk=random_id1)[0]
     random_id3 = random.randint(1, max_id)
-    # print(random_id3)
+    if random_id3 == max_id:
+        random_id2 = 1;
     random_object3 = Recipe.objects.filter(id__gte=random_id3).exclude(pk=random_id1).exclude(pk=random_id2)[0]
     random_id4 = random.randint(1, max_id)
-    # print(random_id4)
+    if random_id4 == max_id:
+        random_id2 = 1;
     random_object4 = Recipe.objects.filter(id__gte=random_id4).exclude(pk=random_id1).exclude(pk=random_id2).exclude(pk=random_id3)[0]
-    # print(random_id1)
-    # print(random_id2)
-    # print(random_id3)
-    # print(random_id4)
-    # return object with that id, or first valid object with id greater than that id
 
 
     todolist = TodoList.objects.all()

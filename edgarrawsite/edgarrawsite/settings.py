@@ -23,9 +23,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'cwnkyxrgg!+j!&-a+^oy2qs#!$w*n_to!)bchyzil&zi@abup&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['35.184.50.4']
+ALLOWED_HOSTS = [
+    '35.184.50.4',
+    'edgarraw.dynu.net',
+    'edgarraw.dynu.com',
+    'edgarraw.ddnsfree.com'
+    ]
 
 # This path is where a user is directed when they first log in
 # Maybe I got that wrong, this is where people are redirected if they arent logged in.

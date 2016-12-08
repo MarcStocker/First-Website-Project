@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 
+
 <!-- Header Section -->
 <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
     <button class="menu-icon" type="button" data-toggle></button>
@@ -79,43 +80,44 @@
     </nav>
 </div>
 
+<!-- CSS and JS -->
+<html lang="en" dir="ltr">
+    <head>
+        <title>{% block title %}{% endblock %} </title>
+        <link rel="Page Icon" href="{% static "media/icon2.png" %}" />
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static "css/foundation.css" %}">
+        <link rel="stylesheet" href="{% static "css/app.css" %}">
+        <style>
+            pre{
+                white-space:pre-wrap;
+                font-family: Verdana;
+                font-size: 20px;
+            }
+            body{
+                /*background-image: url("{% static "media/background.jpg"%}");*/
+                background-color: #555555;
+            }
+            input[type="text"],
+            input[type="password"],
+            input[type="number"],
+            input[type="email"], textarea {
+                background-color: #757575
+            }
+        </style>
+        <script src="{% static "js/vendor/jquery.js" %}"></script>
+        <script src="{% static "js/vendor/what-input.js" %}"></script>
+        <script src="{% static "js/vendor/foundation.js" %}"></script>
+        <script src="{% static "js/app.js" %}"></script>
+    </head>
+</html>
+
 <!-- Individual App Body Section -->
 </div>{% block content %}{% endblock %}
 
 
-<!-- CSS and JS -->
-<html lang="en" dir="ltr">
-<head>
-    <title>{% block title %}{% endblock %} </title>
-    <link rel="Page Icon" href="{% static "media/icon2.png" %}" />
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static "css/foundation.css" %}">
-    <link rel="stylesheet" href="{% static "css/app.css" %}">
-    <style>
-        pre{
-            white-space:pre-wrap;
-            font-family: Verdana;
-            font-size: 20px;
-        }
-        body{
-            /*background-image: url("{% static "media/background.jpg"%}");*/
-            background-color: #555555;
-        }
-        input[type="text"],
-        input[type="password"],
-        input[type="number"],
-        input[type="email"], textarea {
-            background-color: #757575
-        }
-    </style>
-    <script src="{% static "js/vendor/jquery.js" %}"></script>
-    <script src="{% static "js/vendor/what-input.js" %}"></script>
-    <script src="{% static "js/vendor/foundation.js" %}"></script>
-    <script src="{% static "js/app.js" %}"></script>
-</head>
-</html>
 
 
 <!-- Footer Section -->
