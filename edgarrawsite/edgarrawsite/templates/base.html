@@ -50,8 +50,17 @@
                 {% endif %}
             </ul>
         </div>
-        <div class="top-bar-right">
+        <div class="small-1 top-bar-right">
             <ul class="dropdown menu" data-dropdown-menu>
+                <!-- Search Bar for top-bar -->
+                <li>
+                    <form id="searchForm" method="post" action="/recipes/search">
+                        {% csrf_token %}
+                        <input type="text" name="term" size="30" placeholder="Search for a Recipe..."/>
+                    </form>
+                </li>
+                <li> <input type="submit" class="button expanded" value="Search" form="searchForm"/> </li>
+
                 <!-- this will display things for only users who are ogged in -->
                 {% if user.is_authenticated %} <!-- Display Logout -->
                 <li class="menu-text">
@@ -64,21 +73,17 @@
                 {% endif %}
             </ul>
         </div>
-        <div class="top-bar-right">
+        <div class="small-1 top-bar-right">
             <ul class="dropdown menu" data-dropdown-menu>
-                <li>
-                    <form id="searchForm" method="post" action="/recipes/search">
-                        {% csrf_token %}
-                        <input type="text" name="term" size="30" placeholder="Search for a Recipe..."/>
-                    </form>
-                </li>
-                <li>
-                    <input type="submit button" class="button expanded" value="Search" form="searchForm"/>
-                </li>
             </ul>
         </div>
     </nav>
 </div>
+
+
+<!-- Individual App Body Section -->
+</div>{% block content %}{% endblock %}
+
 
 <!-- CSS and JS -->
 <html lang="en" dir="ltr">
@@ -100,12 +105,35 @@
                 /*background-image: url("{% static "media/background.jpg"%}");*/
                 background-color: #555555;
             }
-            input[type="text"],
-            input[type="password"],
-            input[type="number"],
-            input[type="email"], textarea {
-                background-color: #757575
+            input, input[type="text"], textarea {
+                background-color: #757575;
             }
+
+            /*
+                The following lines were SUPPOSED to change a text fields
+                placeholder text color, instead it just changed the texts color
+            */
+            /*input[type="text"], input[type="password"], input[type="number"], input[type="email"],*/
+            /*textarea[type="text"], textarea[type="password"], textarea[type="number"], textarea[type="email"],*/
+            /*textarea[type="text"]::-webkit-input-placeholder {/* WebKit, Blink, Edge */
+              /*color: #dbdbdb;*/
+            /*}*/
+            /*input[type="text"], input[type="password"], input[type="number"], input[type="email"],*/
+            /*textarea[type="text"], textarea[type="password"], textarea[type="number"], textarea[type="email"],*/
+            /*textarea[type="text"]:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+              /*color: #dbdbdb;*/
+            /*}*/
+            /*input[type="text"], input[type="password"], input[type="number"], input[type="email"],*/
+            /*textarea[type="text"], textarea[type="password"], textarea[type="number"], textarea[type="email"],*/
+            /*textarea[type="text"]::-moz-placeholder { /* Mozilla Firefox 19+ */
+              /*color: #dbdbdb;*/
+            /*}*/
+            /*input[type="text"], input[type="password"], input[type="number"], input[type="email"],*/
+            /*textarea[type="text"], textarea[type="password"], textarea[type="number"], textarea[type="email"],*/
+            /*textarea[type="text"]:-ms-input-placeholder { /* Internet Explorer 10-11 */
+              /*color: #dbdbdb;*/
+            /*}*/
+
         </style>
         <script src="{% static "js/vendor/jquery.js" %}"></script>
         <script src="{% static "js/vendor/what-input.js" %}"></script>
@@ -113,11 +141,6 @@
         <script src="{% static "js/app.js" %}"></script>
     </head>
 </html>
-
-<!-- Individual App Body Section -->
-</div>{% block content %}{% endblock %}
-
-
 
 
 <!-- Footer Section -->
