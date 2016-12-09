@@ -17,7 +17,7 @@ from .models import Recipe
 # Create your views here.
 
 def index(request):
-    all_recipes = Recipe.objects.all()
+    all_recipes = Recipe.objects.all().order_by('-id')
     context = {
         'sitename':"EdgarRaw",
         'page_name':"Recipes",
