@@ -25,11 +25,39 @@
         <label> {{ form.recipe.label_tag }}
           {{ form.recipe }}
         </label>
-        <label> {{ form.image.label_tag }}
-            <img class="thumbnail" src="{{ post.image.url }}" alt="" width=270 length=320>
-            <br />
-            {{ form.image }}
-        </label>
+
+        {# had to manually enter form.image information as to add "onchange=" attr for JS preview #}
+        <tr>
+          <th>
+            <div class="large-12 medium-12 medium-centered small-12 small-centered row">
+              <div class="large-6 large-left medium-5 medium-left columns"> <br />
+                <label for="id_image">Current Image: <br />{{ post.image.name }}</label>
+                <img class="thumbnail" src="{{ post.image.url }}" alt="" width=400 height=400>
+              </div>
+              <div class="large-6 large-right medium-5 medium-right columns"> <br />
+                {# The Preview Image #}
+                <font size="3">
+                  New Image Preview:<br /><br />
+                </font>
+                <img class="thumbnail" id="output" src="#" alt="Please select an image to upload..." height="350" width="400"/><br /><br />
+              </div>
+            </div>
+          </th>
+            <p>
+              Replace Image:
+            </p>
+          <td>
+            <input id="id_image" name="image" type="file" onchange="loadFile(event)"required />
+          </td>
+        </tr>
+        {# JS to provide an Image Preview when uploading a new image #}
+        <script>
+          var loadFile = function(event) {
+            var output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+          };
+        </script>
+
         <input type="submit" class="button expanded" value="Confirm Edit">
       </div>
     </form>
