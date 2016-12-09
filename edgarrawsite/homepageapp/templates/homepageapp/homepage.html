@@ -4,14 +4,17 @@
 {% block title %} {{ page_name }} {% endblock title %}
 
 {% block content %}
+{# Top half of website (not including header) #}
 <div class="column">
             <h1 class="text-center">
                 {{ webinfo.banner }}
             </h1>
     <div class="large-12 medium-12 medium-centered small-12 small-centered row">
+      {# Info on left of page #}
         <div class="large-4 large-left medium-5 medium-left columns"> <br />
             <img src="{{ webinfo.image.url }}" width=400 length=300>
         </div>
+      {# Info on right of page #}
         <div class="large-8 large-right medium-8 medium-centered small-centered columns"> <br />
             <font size="4"> <p>
                 <b>{{ webinfo.num_followers }}k</b> Followers &ensp; <b>{{ webinfo.num_posts }}</b> Posts &ensp; <b>{{ webinfo.num_following}}</b> Following
@@ -24,6 +27,10 @@
         </div>
     </div>
 </div>
+
+{# Bottom half of website (not including footer) #}
+
+{# Button to Recipes #}
 <div class="column">
     <br />
     <div class="row small-up-1 medium-up-1 large-up-1">
@@ -31,6 +38,7 @@
     </div>
 </div>
 
+{# Randomly generated Recipes #}
 <div class="row small-up-1 small-centered medium-up-2 medium-centered large-up-4">
     {% if random_object1 %}
     <div class="column">
